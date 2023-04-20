@@ -26,7 +26,8 @@ SET time_zone = "+00:00";
 
 --
 -- Estructura de tabla para la tabla `sessions`
---
+ALTER USER 'root' IDENTIFIED WITH mysql_native_password BY 'mysql';
+flush privileges;
 
 CREATE TABLE `sessions` (
   `session_id` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
