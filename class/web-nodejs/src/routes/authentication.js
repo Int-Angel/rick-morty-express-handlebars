@@ -36,7 +36,7 @@ router.post("/change-password", isLoggedIn, async (req, res) => {
     const newUser = {
       password: await encryptPassword(newPassword),
     };
-    await pool.query("UPDATE User set ? WHERE id = ?", [newUser, req.user.id]);
+    await pool.query("UPDATE user set ? WHERE id = ?", [newUser, req.user.id]);
     req.flash("success", "Contraseña actualizada correctamente");
     res.redirect("/profile");
   }
@@ -56,7 +56,7 @@ router.post("/signup", isNotLoggedIn, async (req, res, next) => {
       username: username,
       password: await encryptPassword(password),
     };
-    await pool.query("INSERT INTO User SET ?", [newUser]);
+    await pool.query("INSERT INTO user SET ?", [newUser]);
     req.flash("success", "Usuario registrado correctamente");
     res.redirect("/signin");
   }
